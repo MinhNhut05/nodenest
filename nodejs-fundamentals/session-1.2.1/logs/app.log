@@ -1,0 +1,5 @@
+[2026-01-25T09:55:44.904Z] [INFO] Application started
+[2026-01-25T09:55:44.909Z] [INFO] User logged in
+[2026-01-25T09:55:44.909Z] [WARN] High memory usage
+[2026-01-25T09:55:44.909Z] [ERROR] Database connection failed
+[2026-01-25T09:55:44.910Z] [INFO] Application stopped

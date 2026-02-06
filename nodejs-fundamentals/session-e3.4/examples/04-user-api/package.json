@@ -1,0 +1,21 @@
+{
+  "name": "user-api",
+  "version": "1.0.0",
+  "description": "User API - Complete project with layer-based structure",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "npx tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "test": "echo \"No tests yet\""
+  },
+  "keywords": ["nodejs", "typescript", "api", "user-management"],
+  "author": "Leminho",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}

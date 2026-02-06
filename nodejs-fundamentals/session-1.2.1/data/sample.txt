@@ -1,0 +1,5 @@
+Hello Leminho!
+Day la file sample de test fs module.
+Dong thu 3.
+Dong thu 4.
+Ket thuc file.
