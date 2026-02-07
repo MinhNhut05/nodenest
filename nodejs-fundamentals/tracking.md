@@ -44,7 +44,7 @@
 | --------- | ----- | ------ | -------- |
 | **GĐ1** | Express: JS Ôn tập | ⚪ Skip | 0/4 (đã biết) |
 | **GĐ1** | Express: Node.js Core | ✅ Completed | 8/8 |
-| **GĐ1** | Express: Server & Routing | ⏳ In Progress | 5/9 |
+| **GĐ1** | Express: Server & Routing | ✅ Completed | 9/9 |
 | **GĐ1** | Express: Authentication | ⏸️ Not Started | 0/8 |
 | **GĐ2** | NestJS: Fundamentals | ⏸️ Not Started | 0/5 |
 | **GĐ2** | NestJS: Database & Auth | ⏸️ Not Started | 0/6 |
@@ -52,7 +52,7 @@
 | **GĐ2** | NestJS: Production Features | ⏸️ Not Started | 0/22 |
 | **GĐ2** | Fullstack & Deploy | ⏸️ Not Started | 0/7 |
 
-**Giai đoạn 1 Progress: 13/25 sessions (~52%)**
+**Giai đoạn 1 Progress: 17/25 sessions (~68%)**
 **Giai đoạn 2 Progress: 0/46 sessions**
 
 ---
@@ -97,21 +97,21 @@
 
 ---
 
-### Module E3 - Server & Routing 🔴 MUST
+### Module E3 - Server & Routing ✅ DONE
 
-> ⏳ **Đang học** - Core của Express
+> ✅ **Đã hoàn thành** - Core của Express
 
 | Session | Topic | Mức độ | Cách học | Status | Lý do |
 |---------|-------|--------|----------|--------|-------|
 | E3.1 | Tạo HTTP server | 🔴 | 🤖 AI | ✅ Done | Code, AI giảng được |
 | E3.2 | Express.js cơ bản | 🔴 | 🤖 AI | ✅ Done | Code, AI giảng được |
 | E3.3 | Routing trong Express | 🔴 | 🤖 AI | ✅ Done | Code patterns |
-| E3.4 | Cách chia thư mục | 🟡 | 🤖 AI | - | Best practices |
-| E3.5 | MVC & RESTful API | 🔴 | 🤖 AI | - | Lý thuyết, interview hỏi |
+| E3.4 | Cách chia thư mục | 🟡 | 🤖 AI | ✅ Done | Best practices |
+| E3.5 | MVC & RESTful API | 🔴 | 🤖 AI | ✅ Done | Lý thuyết, interview hỏi |
 | E3.6 | HTTP Methods | 🔴 | 🤖 AI | ✅ Done | Lý thuyết, interview hỏi |
 | E3.7 | Request Body Parsing | 🔴 | 🤖 AI | ✅ Done | Code patterns |
-| E3.8 | Status codes & Headers | 🔴 | 🤖 AI | - | Lý thuyết, interview hỏi |
-| E3.9 | Middleware pattern | 🔴 | 🤖 AI | - | Lý thuyết + code, interview hỏi |
+| E3.8 | Status codes & Headers | 🔴 | 🤖 AI | ✅ Done | Lý thuyết, interview hỏi |
+| E3.9 | Middleware pattern | 🔴 | 🤖 AI | ✅ Done | Lý thuyết + code, interview hỏi |
 
 ---
 
@@ -377,13 +377,15 @@ Tuần 3-4: N5 - Fullstack
 ## 🎯 Next Actions
 
 1. **Ngay bây giờ:**
-   - [ ] E3.8 - Status codes & Headers (🤖 AI)
-   - [ ] E3.9 - Middleware pattern (🤖 AI)
-   - [ ] E3.5 - MVC & RESTful (🤖 AI)
+   - [x] E3.4 - Cách chia thư mục ✅
+   - [x] E3.5 - MVC & RESTful ✅
+   - [x] E3.8 - Status codes & Headers ✅
+   - [x] E3.9 - Middleware pattern ✅
+   - [ ] E4.1 - JWT là gì (🤖 AI)
 
 2. **Tuần này:**
-   - [ ] Hoàn thành E3 còn lại
    - [ ] Bắt đầu E4 - JWT Authentication (🤖 AI)
+   - [ ] E4.1-E4.3 JWT concepts
 
 3. **Tuần sau:**
    - [ ] E4 hoàn thành
