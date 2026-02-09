@@ -12,45 +12,65 @@
  * - Không gọi next() = request bị treo (hanging)
  */
 
-import { Request, Response, NextFunction } from 'express'
-import HttpStatus from '../constants/httpStatus'
-import { USERS_MESSAGES } from '../constants/message'
+import { Request, Response, NextFunction } from "express";
+import HttpStatus from "../constants/httpStatus";
+import { USERS_MESSAGES } from "../constants/message";
 
 /**
  * Register Validator Middleware
  * Validate: name, email, password bắt buộc
  */
-export const registerValidator = (req: Request, res: Response, next: NextFunction) => {
-  const { name, email, password } = req.body
+export const registerValidator = (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  const { name, email, password } = req.body;
 
   // TODO 1: Kiểm tra nếu thiếu field thì trả về lỗi 422
   // Nếu hợp lệ thì gọi next()
 
   // Code của bạn ở đây:
-  // if (...) {
-  //   return res.status(...).json({ message: ... })
-  // }
-  // next()
-}
+  if (!name || !email || !password) {
+    return res.status(HttpStatus.UNPROCESSABLE_ENTITY).json({
+      message: USERS_MESSAGES.VALIDATION_ERROR
+    });
+  }
+  next();
+};
 
 /**
  * Login Validator Middleware
  * Validate: email, password bắt buộc
  */
-export const loginValidator = (req: Request, res: Response, next: NextFunction) => {
+export const loginValidator = (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
   // TODO 2: Tương tự registerValidator
   // Kiểm tra email và password
 
   // Code của bạn ở đây:
-
-}
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(HttpStatus.UNPROCESSABLE_ENTITY).json({
+      message: USERS_MESSAGES.VALIDATION_ERROR
+    });
+  }
+  next();
+};
 
 /**
  * Access Token Validator Middleware
  * Kiểm tra header Authorization có Bearer token
  */
-export const accessTokenValidator = (req: Request, res: Response, next: NextFunction) => {
-  const authorization = req.headers.authorization
+export const accessTokenValidator = (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  const authorization = req.headers.authorization;
 
   // TODO 3: Kiểm tra authorization header
   // Format: "Bearer <token>"
@@ -65,5 +85,30 @@ export const accessTokenValidator = (req: Request, res: Response, next: NextFunc
   // 5. Gọi next()
 
   // Code của bạn ở đây:
+  if (!authorization) {
+    return res.status(HttpStatus.UNAUTHORIZED).json({
+      message: 'Access token is required'
+    });
+  }
 
-}
+  const [type, token] = authorization.split(' ');
+
+  if (type !== 'Bearer' || !token) {
+    return res.status(HttpStatus.UNAUTHORIZED).json({
+      message: 'Invalid token format'
+    });
+  }
+
+  // Giả lập decode token
+  try {
+    const userId = token.replace('fake_access_token_', '');
+    // Gắn user_id vào req để controller dùng
+    (req as any).decoded_authorization = { user_id: userId };
+    next();
+  } catch (error) {
+    return res.status(HttpStatus.UNAUTHORIZED).json({
+      message: 'Invalid token'
+    });
+  }
+};
+
