@@ -37,3 +37,7 @@ Thumbs.db
 dist/
 build/
 coverage/
+
+# General logs and pids
+*.log
+*.pid

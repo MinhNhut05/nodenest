@@ -1,0 +1,18 @@
+export const USERS_MESSAGES = {
+  VALIDATION_ERROR: "Validation error 123",
+  USER_NOT_FOUND: "User not found",
+  EMAIL_ALREADY_EXISTS: "Email already exists",
+  EMAIL_OR_PASSWORD_INCORRECT: "Email or password is incorrect",
+  REGISTER_SUCCESS: "Register success",
+  LOGIN_SUCCESS: "Login success",
+  GET_PROFILE_SUCCESS: "Get profile success",
+  UPDATE_PROFILE_SUCCESS: "Update profile success",
+  NAME_IS_REQUIRED: "Name is required",
+  EMAIL_IS_REQUIRED: "Email is required",
+  EMAIL_IS_INVALID: "Email is invalid hii",
+  PASSWORD_IS_REQUIRED: "Password is required",
+  PASSWORD_LENGTH: "Password must be 6-50 characters",
+  ACCESS_TOKEN_REQUIRED: "Access token is required",
+  INVALID_TOKEN_FORMAT: "Invalid token format",
+  INVALID_TOKEN: "Invalid token",
+} as const;

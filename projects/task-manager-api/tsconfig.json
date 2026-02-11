@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    // File Layout
+    "rootDir": "./src", // Source code nằm trong folder src/
+    "outDir": "./dist", // Code compiled ra folder dist/
+
+    // Environment - Node.js backend
+    "module": "nodenext", // Dùng Node.js module system
+    "target": "ES2022", // Target ES2022 (Node 18+ hỗ trợ)
+    "types": ["node"], // Include Node.js types (fs, path, process...)
+
+    // Source maps để debug
+    "sourceMap": true,
+
+    // Strict mode - bắt lỗi sớm, best practice
+    "strict": true,
+    "noUncheckedIndexedAccess": true, // Truy cập array/object phải check undefined
+    "skipLibCheck": true, // Skip check node_modules (nhanh hơn)
+    "isolatedModules": true, // Mỗi file là 1 module độc lập
+    "moduleDetection": "force", // Force mọi file là module
+    "verbatimModuleSyntax": true, // Import/export syntax chính xác
+    "esModuleInterop": true, // Tương thích CommonJS imports
+    "forceConsistentCasingInFileNames": true // Case-sensitive imports
+  },
+  "include": ["src/**/*"], // Chỉ compile files trong src/
+  "exclude": ["node_modules", "dist"] // Bỏ qua node_modules và dist/
+}
