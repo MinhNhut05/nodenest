@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Enum - khai báo các giá trị cố định
+  enum TaskStatus {
+    TODO
+    IN_PROGRESS
+    DONE
+  }
+
+  // Model - mỗi model = 1 table trong database
+  model User {
+    id           String   @id @default(uuid())    // Primary key, tự tạo UUID
+    email        String   @unique                  // Không cho phép trùng email
+    password     String                            // Bắt buộc
+    name         String                            // Bắt buộc
+    refreshToken String?                           // ? = nullable (có thể null)
+    createdAt    DateTime @default(now())          // Tự điền thời gian tạo
+    updatedAt    DateTime @updatedAt               // Tự cập nhật khi sửa
+
+    tasks        Task[]                            // Relation: 1 user có nhiều tasks
+  }
+
+  model Task {
+    id          String     @id @default(uuid())
+    title       String
+    description String?
+    status      TaskStatus @default(TODO)          // Mặc định là TODO
+    createdAt   DateTime   @default(now())
+    updatedAt   DateTime   @updatedAt
+
+    userId      String                             // Foreign key
+    user        User       @relation(fields: [userId], references: [id])  // Trỏ về User
+  }
