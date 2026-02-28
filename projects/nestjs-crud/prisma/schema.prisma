@@ -1,0 +1,80 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// TODO: Định nghĩa model User
+// Gợi ý:
+//   - id:        Int, khóa chính, tự tăng
+//   - email:     String, unique
+//   - name:      String
+//   - password:  String
+//   - createdAt: DateTime, mặc định = now()
+//   - updatedAt: DateTime, tự cập nhật khi thay đổi (dùng @updatedAt)
+//   - posts:     quan hệ 1:N với Post (trường ảo, không có trong DB)
+//   - tokens:    quan hệ 1:N với RefreshToken (trường ảo, không có trong DB)
+// ============================================
+
+model User {
+  id        Int            @id @default(autoincrement())
+  email     String         @unique
+  name      String
+  password  String
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+  posts     Post[]
+  tokens    RefreshToken[]
+}
+
+// ============================================
+// TODO: Định nghĩa model Post
+// Gợi ý:
+//   - id:        Int, khóa chính, tự tăng
+//   - title:     String
+//   - content:   String
+//   - authorId:  Int (foreign key trỏ đến User)
+//   - createdAt: DateTime, mặc định = now()
+//   - updatedAt: DateTime, tự cập nhật
+//   - author:    quan hệ với User (trường ảo)
+//              → fields: [authorId], references: [id]
+//              → onDelete: Cascade, onUpdate: NoAction
+// ============================================
+model Post {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  authorId  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+// ============================================
+// TODO: Định nghĩa model RefreshToken
+// Gợi ý:
+//   - token:     String, unique
+//   - userId:    Int (foreign key trỏ đến User)
+//   - expiresAt: DateTime
+//   - createdAt: DateTime, mặc định = now()
+//   - user:      quan hệ với User (trường ảo)
+//              → fields: [userId], references: [id]
+//              → onDelete: Cascade, onUpdate: NoAction
+//
+// Lưu ý: Bảng này KHÔNG cần primary key (@id)
+//         vì token đã là unique
+// ============================================
+model RefreshToken {
+  token     String   @id
+  userId    Int
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
